@@ -1,41 +1,40 @@
 package org.example.dsa.linkedList
 
-import kotlin.math.pow
-
 class LinkedList(private var value: Int?) {
-    var head: Node? = null
-    var tail: Node? = null
+    class LLNode(var value: Int, var next: LLNode?)
+    var head: LLNode? = null
+    var tail: LLNode? = null
     var length = 0
 
     init {
         if (value != null) {
-            val node = Node(value!!, null)
-            head = node
-            tail = node
+            val LLNode = LLNode(value!!, null)
+            head = LLNode
+            tail = LLNode
             length++
         }
     }
 
     fun append(value: Int) {
-        val node = Node(value, null)
+        val LLNode = LLNode(value, null)
 
         if (length < 1) {
-            head = node
-            tail = node
+            head = LLNode
+            tail = LLNode
         } else {
-            tail!!.next = node
-            tail = node
+            tail!!.next = LLNode
+            tail = LLNode
         }
         length++
     }
 
-    fun removeLast(): Node? {
+    fun removeLast(): LLNode? {
         if (head == null) {
             return null
         }
 
         var temp = head
-        var last: Node? = null
+        var last: LLNode? = null
         while (temp != tail) {
             if (temp!!.next == tail) {
                 last = temp.next
@@ -55,13 +54,13 @@ class LinkedList(private var value: Int?) {
     }
 
     fun prepend(value: Int) {
-        val node = Node(value, null)
+        val LLNode = LLNode(value, null)
         if (length == 0) {
-            head = node
-            tail = node
+            head = LLNode
+            tail = LLNode
         } else {
-            node.next = head
-            head = node
+            LLNode.next = head
+            head = LLNode
         }
         length++
     }
@@ -122,15 +121,15 @@ class LinkedList(private var value: Int?) {
             prepend(value)
             return true
         }
-        var current:Node? = null
+        var current:LLNode? = null
         var next = head
 
         for(i in 0 until index){
             current = next
             next = current?.next
         }
-        val node = Node(value, next)
-        current?.next = node
+        val LLNode = LLNode(value, next)
+        current?.next = LLNode
         length++
         return true
     }
@@ -145,8 +144,8 @@ class LinkedList(private var value: Int?) {
         if(index == length - 1){
             return removeLast()?.value
         }
-        var current:Node? = null
-        var next:Node? = head
+        var current:LLNode? = null
+        var next:LLNode? = head
         for(i in 0 until index){
             current = next
             next = current?.next
@@ -214,34 +213,34 @@ class LinkedList(private var value: Int?) {
     }
 
     fun partitionList(x:Int){
-        var highNodeCurrent: Node? = null
-        var lowNodeCurrent: Node? = null
-        var firstHighNode: Node? = null
+        var highLLNodeCurrent: LLNode? = null
+        var lowLLNodeCurrent: LLNode? = null
+        var firstHighLLNode: LLNode? = null
         var current = head
         var next = head?.next
 
         while(current!=null){
             if(current.value >= x){
-                if (highNodeCurrent == null) {
-                    firstHighNode = current
-                    highNodeCurrent = current
+                if (highLLNodeCurrent == null) {
+                    firstHighLLNode = current
+                    highLLNodeCurrent = current
                 } else {
-                    highNodeCurrent.next = current
-                    highNodeCurrent = current
+                    highLLNodeCurrent.next = current
+                    highLLNodeCurrent = current
                 }
                 if (next!=null && next.value < x) {
                     current.next = null
                 }
             } else {
-                if(lowNodeCurrent == null) {
+                if(lowLLNodeCurrent == null) {
                     head = current
-                    lowNodeCurrent = current
+                    lowLLNodeCurrent = current
                 } else {
-                    lowNodeCurrent.next = current
-                    lowNodeCurrent = current
+                    lowLLNodeCurrent.next = current
+                    lowLLNodeCurrent = current
                 }
                 if (next !=null && next.value >= x) {
-                    lowNodeCurrent.next = null
+                    lowLLNodeCurrent.next = null
                 }
             }
             current = next
@@ -249,7 +248,7 @@ class LinkedList(private var value: Int?) {
 
         }
 
-        lowNodeCurrent?.next = firstHighNode
+        lowLLNodeCurrent?.next = firstHighLLNode
 
     }
 
@@ -280,8 +279,8 @@ class LinkedList(private var value: Int?) {
         var prev = head
         var current = head?.next
         var next = head?.next?.next
-        var tempStart: Node? = null
-        var reverseStart: Node? = null
+        var tempStart: LLNode? = null
+        var reverseStart: LLNode? = null
         var i = 1
 
 
@@ -333,8 +332,6 @@ class LinkedList(private var value: Int?) {
         println("length: $length")
     }
 }
-
-class Node(var value: Int, var next: Node?)
 
 fun main() {
     var linkedList = LinkedList(1)
