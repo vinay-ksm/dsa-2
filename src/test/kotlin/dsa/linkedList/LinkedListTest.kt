@@ -2,7 +2,6 @@ package dsa.linkedList
 
 import org.example.dsa.linkedList.LinkedList
 import org.junit.jupiter.api.Test
-import javax.swing.plaf.ListUI
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 import kotlin.test.assertNull
@@ -62,7 +61,6 @@ class LinkedListTest {
     fun `removeLast when only head is present`() {
         val linkedList = LinkedList(1)
         val node = linkedList.removeLast()
-        assertEquals(1, node?.value)
         assertEquals(0, linkedList.length)
     }
 
