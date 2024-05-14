@@ -1,7 +1,7 @@
-package org.example.dsa.linkedList
+package org.example.dsa
 
 class DoublyLinkedList(value: Int?) {
-    class DLLNode(var value: Int, var prev: DLLNode?, var next: DLLNode?)
+    data class DLLNode(var value: Int, var prev: DLLNode?, var next: DLLNode?)
 
     var head: DLLNode? = null
     var tail: DLLNode? = null

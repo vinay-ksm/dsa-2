@@ -1,7 +1,7 @@
-package org.example.dsa.linkedList
+package org.example.dsa
 
 class LinkedList(private var value: Int?) {
-    class LLNode(var value: Int, var next: LLNode?)
+    data class LLNode(var value: Int, var next: LLNode?)
     var head: LLNode? = null
     var tail: LLNode? = null
     var length = 0
@@ -121,7 +121,7 @@ class LinkedList(private var value: Int?) {
             prepend(value)
             return true
         }
-        var current:LLNode? = null
+        var current: LLNode? = null
         var next = head
 
         for(i in 0 until index){
@@ -144,8 +144,8 @@ class LinkedList(private var value: Int?) {
         if(index == length - 1){
             return removeLast()?.value
         }
-        var current:LLNode? = null
-        var next:LLNode? = head
+        var current: LLNode? = null
+        var next: LLNode? = head
         for(i in 0 until index){
             current = next
             next = current?.next
