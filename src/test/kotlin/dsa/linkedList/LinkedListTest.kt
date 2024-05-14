@@ -1,6 +1,6 @@
 package dsa.linkedList
 
-import org.example.dsa.linkedList.LinkedList
+import org.example.dsa.LinkedList
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
