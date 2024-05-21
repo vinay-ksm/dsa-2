@@ -1,22 +1,22 @@
 package org.example.dsa
 
-class Queue(value: Int?) {
-    data class QueueNode(var value: Int?, var next: QueueNode?)
+class Queue<T>(value: T?) {
+    data class QueueNode<T>(var value: T?, var next: QueueNode<T>?)
 
     var length = 0
-    var first: QueueNode? = null
-    var last: QueueNode? = null
+    var first: QueueNode<T>? = null
+    var last: QueueNode<T>? = null
 
     init {
         if (value != null) {
-            val node = QueueNode(value, null)
+            val node = QueueNode<T>(value, null)
             first = node
             last = node
             length++
         }
     }
 
-    fun enqueue(value: Int) {
+    fun enqueue(value: T) {
         val node = QueueNode(value, null)
         if (last == null) {
             first = node
@@ -27,7 +27,7 @@ class Queue(value: Int?) {
         length++
     }
 
-    fun dequeue(): Int? {
+    fun dequeue(): T? {
         if (first == null) return null
         val currentFirst = first
 
